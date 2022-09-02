@@ -23,9 +23,7 @@ if (!notionDatabaseId || !notionSecret) {
     throw Error("Must define NOTION_SECRET and NOTION_DATABASE_ID in env");
 }
 
-const notion = new Client({
-    auth: notionSecret,
-});
+const notion = new Client({auth: notionSecret});
 
 (async () => {
     const response = await notion.databases.retrieve({ database_id: notionDatabaseId });
