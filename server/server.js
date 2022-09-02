@@ -41,7 +41,7 @@ const notion = new Client({auth: notionSecret});
                     {
                         type: 'text',
                         text: {
-                            content: 'Sanjaya',
+                            content: 'Nimuthu',
                         },
                     },
                 ],
@@ -52,7 +52,7 @@ const notion = new Client({auth: notionSecret});
                     {
                         type: 'text',
                         text: {
-                            content: 'C003',
+                            content: 'C004',
                         },
                     }
                 ],
@@ -63,7 +63,7 @@ const notion = new Client({auth: notionSecret});
                     {
                         type: 'text',
                         text: {
-                            content: 'kochchikade',
+                            content: 'Dankotuwa',
                         },
                     }
                 ],
@@ -71,6 +71,22 @@ const notion = new Client({auth: notionSecret});
         }
     });
     console.log(response);
+})();
+
+(async () => {
+    const response = await notion.databases.query({
+        database_id: notionDatabaseId,
+        "filter": {
+            "property": "id",
+            "rich_text": {
+                "contains": 'C002'
+            }
+        }
+    });
+    console.log(response.results[0].properties.name.title[0].plain_text)
+    console.log(response.results[0].properties.id.rich_text[0].plain_text)
+    console.log(response.results[0].properties.address.rich_text[0].plain_text)
+    return response.results[0].id;
 })();
 
 
