@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb9d3f69-8039-4765-b5f2-49a0d0309643" name="Changes" comment="post data to database">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="bb9d3f69-8039-4765-b5f2-49a0d0309643" name="Changes" comment="get data from id">
+      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/reportWebVitals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/setupTests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +93,7 @@
       <workItem from="1662093654719" duration="45000" />
       <workItem from="1662093717950" duration="2673000" />
       <workItem from="1662107351778" duration="1838000" />
-      <workItem from="1662112273341" duration="1527000" />
+      <workItem from="1662112273341" duration="2156000" />
     </task>
     <task id="LOCAL-00001" summary="get database from notion">
       <created>1662095975550</created>
@@ -93,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662112830504</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="get data from id">
+      <created>1662113918047</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662113918047</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="get database from notion" />
     <MESSAGE value="post data to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="post data to database" />
+    <MESSAGE value="get data from id" />
+    <option name="LAST_COMMIT_MESSAGE" value="get data from id" />
   </component>
 </project>
