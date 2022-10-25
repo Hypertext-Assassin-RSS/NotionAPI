@@ -58,49 +58,53 @@ app.get('/user',(req,res)=> {
 
 
 
-// (async  () => {
-//     const response = await notion.pages.create({
-//         parent: {
-//             database_id: notionDatabaseId,
-//         },
-//         properties: {
-//             'name': {
-//                 type: 'title',
-//                 title: [
-//                     {
-//                         type: 'text',
-//                         text: {
-//                             content: 'Deneth',
-//                         },
-//                     },
-//                 ],
-//             },
-//             'id' : {
-//                 type: 'rich_text',
-//                 rich_text: [
-//                     {
-//                         type: 'text',
-//                         text: {
-//                             content: 'C006',
-//                         },
-//                     }
-//                 ],
-//             },
-//             'address': {
-//                 type: 'rich_text',
-//                 rich_text: [
-//                     {
-//                         type: 'text',
-//                         text: {
-//                             content: 'Colombo',
-//                         },
-//                     }
-//                 ],
-//             },
-//         }
-//     });
-//     console.log(response);
-// })();
+app.post('/user',(req,res)=> {
+    //console.log(req)
+(async  () => {
+    const response = await notion.pages.create({
+        parent: {
+            database_id: notionDatabaseId,
+        },
+        properties: {
+            'name': {
+                type: 'title',
+                title: [
+                    {
+                        type: 'text',
+                        text: {
+                            content: req.body.name,
+                        },
+                    },
+                ],
+            },
+            'id' : {
+                type: 'rich_text',
+                rich_text: [
+                    {
+                        type: 'text',
+                        text: {
+                            content: req.body.id,
+                        },
+                    }
+                ],
+            },
+            'address': {
+                type: 'rich_text',
+                rich_text: [
+                    {
+                        type: 'text',
+                        text: {
+                            content: req.body.address,
+                        },
+                    }
+                ],
+            },
+        }
+    });
+    console.log(response);
+})();
+    res.json({message:'User '+req.body.id+' Saved!'})
+})
 
 /*(async () => {
     const response = await notion.databases.query({
