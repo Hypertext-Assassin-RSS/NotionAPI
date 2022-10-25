@@ -1,6 +1,8 @@
 import { Component } from "react";
 import {
+    Button,
   Grid,
+  Input,
   Table,
   TableBody,
   TableCell,
@@ -11,20 +13,25 @@ import {
 import HomeService from "../services/HomeService";
 import axios from "axios";
 
+
 class Home extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       data: [],
+      id:'',
     };
   }
 
-  createAccount = async () => {
-    const json = JSON.stringify({ id:"C001"})
+  loadData = async () => {
     const promise = new Promise((resolve, reject) =>{
-        axios.get('http://127.0.0.1:4000/user', json)
+        axios.get('http://127.0.0.1:4000/user', { params: { id: this.state.id } })
             .then((res) =>{
                 console.log(res)
+                this.setState({
+                    data:res.data
+                })
+                console.log(this.state.data)
                 return resolve(res)
             })
             .catch((err)=>{
@@ -51,44 +58,24 @@ class Home extends Component {
 
 
   componentDidMount(){
-    //this.load();
-    this.createAccount()
+    //this.loadData()
    
   }
 
   render() {
     return (
       <>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item lg={8}>
-            <TableContainer>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>ID</TableCell>
-                    <TableCell align="right">Name</TableCell>
-                    <TableCell align="right">Address</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {/* {this.state.data.map((row) => (
-                                            <TableRow>
-                                                <TableCell align="left">{row.id}</TableCell>
-                                                <TableCell align="left">{row.name}</TableCell>
-                                                <TableCell align="left">{row.address}</TableCell>
-                                            </TableRow>
-                                        ))
-                                    }*/}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Grid>
-        </Grid>
+        <h1>{this.state.data.name}</h1>
+        <h1>{this.state.data.address}</h1>
+        <h1>{this.state.data.id}</h1>
+        <Input placeholder="id" onChange={(e) => {
+            this.setState({
+                id:e.target.value
+            })
+        }}/>
+        <Button variant="contained"
+        onClick={() => {this.loadData()}}
+        >Submit</Button>
       </>
     );
   }

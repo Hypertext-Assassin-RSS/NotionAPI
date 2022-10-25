@@ -31,28 +31,28 @@ app.get('/',(req,res)=> {
 })
 
 app.get('/user',(req,res)=> {
-    console.log(req)
-    res.send('resived')
-//     (async () => {
-//   const response = await notion.databases.query({
-//     database_id: notionDatabaseId,
-//     filter: {
-//       property: "id",
-//       rich_text: {
-//         contains: req.body.id,
-//       },
-//     },
-//   });
-//   const name  = response.results[0].properties.name.title[0].plain_text
-//   const address = response.results[0].properties.address.rich_text[0].plain_text
-//   const id = response.results[0].properties.id.rich_text[0].plain_text
+    //console.log(req.query.id)
+    //res.send('resived')
+    (async () => {
+  const response = await notion.databases.query({
+    database_id: notionDatabaseId,
+    filter: {
+      property: "id",
+      rich_text: {
+        contains: req.query.id,
+      },
+    },
+  });
+  const name  = response.results[0].properties.name.title[0].plain_text
+  const address = response.results[0].properties.address.rich_text[0].plain_text
+  const id = response.results[0].properties.id.rich_text[0].plain_text
 
-//   res.json({'name':name,'address':address,'id':id})
+  res.json({'name':name,'address':address,'id':id})
 
-// //   console.log(response.results[0].properties.name.title[0].plain_text);
-// //   console.log(response.results[0].properties.address.rich_text[0].plain_text);
-// //   console.log(response.results[0].properties.id.rich_text[0].plain_text);
-// })();
+//   console.log(response.results[0].properties.name.title[0].plain_text);
+//   console.log(response.results[0].properties.address.rich_text[0].plain_text);
+//   console.log(response.results[0].properties.id.rich_text[0].plain_text);
+})();
 })
 
 
