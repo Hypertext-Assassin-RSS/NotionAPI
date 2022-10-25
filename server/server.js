@@ -1,95 +1,106 @@
-const  express = require('express')
-require('dotenv').config()
-
+const express = require("express");
+require("dotenv").config();
 
 const app = express();
-const cors = require('cors')
+const cors = require("cors");
 const port = 4000;
 
 const notionDatabaseId = process.env.NOTION_DATABASE_ID;
 const notionSecret = process.env.NOTION_SECRET;
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-app.listen(port, (req,res) => {
-    console.log(`Example app listening on port ${port}`)
-})
+app.listen(port, (req, res) => {
+  console.log(`Example app listening on port ${port}`);
+});
 
 
-app.get('/', async (req, res) => {
-    const response = await notion.databases.query({
-        database_id: notionDatabaseId,
-        "filter": {
-            "property": "id",
-            "rich_text": {
-                "contains": 'C002'
-            }
-        }
-    });
-    res.json({id:response.results[0].properties.id.rich_text[0].plain_text,name:response.results[0].properties.name.title[0].plain_text,address:response.results[0].properties.address.rich_text[0].plain_text})
-    /*console.log(response.results[0].properties.name.title[0].plain_text)
-    console.log(response.results[0].properties.id.rich_text[0].plain_text)
-    console.log(response.results[0].properties.address.rich_text[0].plain_text)*/
-    return response.results[0].id;
-})
 
-const { Client } = require('@notionhq/client');
-const {json} = require("express");
+const { Client } = require("@notionhq/client");
+const { json } = require("express");
 
 if (!notionDatabaseId || !notionSecret) {
-    throw Error("Must define NOTION_SECRET and NOTION_DATABASE_ID in env");
+  throw Error("Must define NOTION_SECRET and NOTION_DATABASE_ID in env");
 }
 
-const notion = new Client({auth: notionSecret});
+const notion = new Client({ auth: notionSecret });
 
-(async () => {
-    const response = await notion.databases.retrieve({ database_id: notionDatabaseId });
-})();
+app.get('/',(req,res)=> {
+   res.send('This works')
+})
 
-/*(async  () => {
-    const response = await notion.pages.create({
-        parent: {
-            database_id: notionDatabaseId,
-        },
-        properties: {
-            'name': {
-                type: 'title',
-                title: [
-                    {
-                        type: 'text',
-                        text: {
-                            content: 'Deneth',
-                        },
-                    },
-                ],
-            },
-            'id' : {
-                type: 'rich_text',
-                rich_text: [
-                    {
-                        type: 'text',
-                        text: {
-                            content: 'C006',
-                        },
-                    }
-                ],
-            },
-            'address': {
-                type: 'rich_text',
-                rich_text: [
-                    {
-                        type: 'text',
-                        text: {
-                            content: 'Colombo',
-                        },
-                    }
-                ],
-            },
-        }
-    });
-    console.log(response);
-})();*/
+app.get('/user',(req,res)=> {
+    console.log(req)
+    res.send('resived')
+//     (async () => {
+//   const response = await notion.databases.query({
+//     database_id: notionDatabaseId,
+//     filter: {
+//       property: "id",
+//       rich_text: {
+//         contains: req.body.id,
+//       },
+//     },
+//   });
+//   const name  = response.results[0].properties.name.title[0].plain_text
+//   const address = response.results[0].properties.address.rich_text[0].plain_text
+//   const id = response.results[0].properties.id.rich_text[0].plain_text
+
+//   res.json({'name':name,'address':address,'id':id})
+
+// //   console.log(response.results[0].properties.name.title[0].plain_text);
+// //   console.log(response.results[0].properties.address.rich_text[0].plain_text);
+// //   console.log(response.results[0].properties.id.rich_text[0].plain_text);
+// })();
+})
+
+
+
+
+// (async  () => {
+//     const response = await notion.pages.create({
+//         parent: {
+//             database_id: notionDatabaseId,
+//         },
+//         properties: {
+//             'name': {
+//                 type: 'title',
+//                 title: [
+//                     {
+//                         type: 'text',
+//                         text: {
+//                             content: 'Deneth',
+//                         },
+//                     },
+//                 ],
+//             },
+//             'id' : {
+//                 type: 'rich_text',
+//                 rich_text: [
+//                     {
+//                         type: 'text',
+//                         text: {
+//                             content: 'C006',
+//                         },
+//                     }
+//                 ],
+//             },
+//             'address': {
+//                 type: 'rich_text',
+//                 rich_text: [
+//                     {
+//                         type: 'text',
+//                         text: {
+//                             content: 'Colombo',
+//                         },
+//                     }
+//                 ],
+//             },
+//         }
+//     });
+//     console.log(response);
+// })();
 
 /*(async () => {
     const response = await notion.databases.query({
@@ -106,10 +117,3 @@ const notion = new Client({auth: notionSecret});
     console.log(response.results[0].properties.address.rich_text[0].plain_text)
     return response.results[0].id;
 })();*/
-
-
-
-
-
-
-

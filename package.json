@@ -4,7 +4,7 @@
   "description": "database api using notion",
   "main": "server/server.js",
   "scripts": {
-    "nodemon": "nodemon server/server.js"
+    "nodemon": "nodemon server.js"
   },
   "author": "Rajith Sanjaya",
   "license": "ISC",
