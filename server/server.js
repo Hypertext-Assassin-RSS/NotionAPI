@@ -106,18 +106,4 @@ app.post('/user',(req,res)=> {
     res.json({message:'User '+req.body.id+' Saved!'})
 })
 
-/*(async () => {
-    const response = await notion.databases.query({
-        database_id: notionDatabaseId,
-        "filter": {
-            "property": "id",
-            "rich_text": {
-                "contains": 'C002'
-            }
-        }
-    });
-    console.log(response.results[0].properties.name.title[0].plain_text)
-    console.log(response.results[0].properties.id.rich_text[0].plain_text)
-    console.log(response.results[0].properties.address.rich_text[0].plain_text)
-    return response.results[0].id;
-})();*/
+
